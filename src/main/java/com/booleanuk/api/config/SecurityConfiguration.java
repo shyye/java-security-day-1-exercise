@@ -16,6 +16,9 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                // To be able to test in Insomnia
+                .csrf((csrf) -> csrf.disable())
+
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/games", "/games/*").authenticated()
                 )
